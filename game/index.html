@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solmar City — an open-world crime sandbox</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b1026; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  #scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .hidden { display: none !important; }
+
+  #hud { position: fixed; inset: 0; pointer-events: none; color: #eef1f5; }
+  #top-left { position: absolute; top: 14px; left: 16px; text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+  #cash { font-size: 26px; font-weight: 800; color: #7be495; }
+  #health-bar { margin-top: 6px; width: 170px; height: 10px; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.35); border-radius: 5px; overflow: hidden; }
+  #health-fill { height: 100%; width: 100%; background: #53d769; transition: width .15s; }
+  #top-right { position: absolute; top: 12px; right: 16px; text-align: right; text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+  #stars { font-size: 26px; letter-spacing: 3px; color: #ffd23e; }
+  #mission-timer { font-size: 20px; font-weight: 700; color: #ffd23e; margin-top: 2px; }
+  #objective-wrap { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); max-width: 46%; text-align: center; }
+  #objective { display: inline-block; background: rgba(10,14,22,.62); border: 1px solid rgba(255,255,255,.22); border-radius: 8px; padding: 7px 14px; font-size: 16px; font-weight: 600; }
+  #bottom-left { position: absolute; left: 16px; bottom: 16px; }
+  #minimap { width: 190px; height: 190px; border: 2px solid rgba(255,255,255,.35); border-radius: 10px; background: #20242b; }
+  #bottom-right { position: absolute; right: 16px; bottom: 16px; text-align: right; text-shadow: 0 1px 3px rgba(0,0,0,.8); }
+  #speedo { font-size: 30px; font-weight: 800; }
+  #prompt { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); font-size: 17px; font-weight: 600; text-shadow: 0 1px 4px rgba(0,0,0,.9); }
+  #toast { position: absolute; top: 76px; left: 50%; transform: translateX(-50%); background: rgba(10,14,22,.78); border: 1px solid rgba(255,210,62,.5); color: #ffe9a8; border-radius: 8px; padding: 8px 16px; font-size: 16px; font-weight: 600; }
+  #arrest { position: absolute; top: 46%; left: 50%; transform: translateX(-50%); width: 260px; text-align: center; font-weight: 800; letter-spacing: 2px; color: #ff8a7a; }
+  #arrest-bar { margin-top: 6px; height: 10px; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.4); border-radius: 5px; overflow: hidden; }
+  #arrest-fill { height: 100%; width: 0%; background: #ff5340; }
+
+  #overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(5,8,14,.45); pointer-events: none; }
+  #overlay-card { background: rgba(13,18,28,.88); border: 1px solid rgba(255,255,255,.25); border-radius: 14px; padding: 34px 44px; max-width: 620px; text-align: center; color: #eef1f5; box-shadow: 0 18px 60px rgba(0,0,0,.6); }
+  #overlay-title { font-size: 44px; font-weight: 900; letter-spacing: 3px; margin-bottom: 14px; color: #ffd23e; }
+  #overlay-lines { font-size: 16px; line-height: 1.55; color: #c6cdd8; white-space: pre-line; }
+  #overlay-prompt { margin-top: 18px; font-size: 17px; font-weight: 700; color: #7be495; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="scene" aria-label="Solmar City: a 3D open-world crime game"></canvas>
+<p id="status" role="status" aria-live="polite"></p>
+
+<div id="hud">
+  <div id="top-left">
+    <div id="cash">$0</div>
+    <div id="health-bar"><div id="health-fill"></div></div>
+  </div>
+  <div id="top-right">
+    <div id="stars">☆☆☆☆☆</div>
+    <div id="mission-timer"></div>
+  </div>
+  <div id="objective-wrap"><div id="objective">Find a glowing job marker to start work</div></div>
+  <div id="toast" class="hidden"></div>
+  <div id="arrest" class="hidden">BUSTED<div id="arrest-bar"><div id="arrest-fill"></div></div></div>
+  <div id="bottom-left"><canvas id="minimap" width="190" height="190"></canvas></div>
+  <div id="bottom-right"><div id="speedo"></div></div>
+  <div id="prompt"></div>
+</div>
+
+<div id="overlay" class="hidden">
+  <div id="overlay-card">
+    <div id="overlay-title"></div>
+    <div id="overlay-lines"></div>
+    <div id="overlay-prompt"></div>
+  </div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
