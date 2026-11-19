@@ -1,5 +1,9 @@
 # Solmar City
 
+[![make.fun gta6-01](https://make.fun/badge/gta6-01.svg)](https://make.fun/c/gta6-01)
+[![rank](https://make.fun/badge/gta6-01/maungzy86/solmar-city-v3/rank.svg)](https://make.fun/c/gta6-01)
+[![reward](https://make.fun/badge/gta6-01/maungzy86/solmar-city-v3/reward.svg)](https://make.fun/c/gta6-01)
+
 An open-world crime sandbox that runs in the browser. Solmar City is a
 procedurally generated coastal grid of avenues, towers, a park and a car
 lot — and you are the newest driver-for-hire on its streets. Take jobs from

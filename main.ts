@@ -1,3 +1,4 @@
+// Solmar City v3 — make.fun gta6-01 handover entrypoint, authored for this entry: this main.ts hands in Solmar City v3 for the gta6-01 competition, copying game/ and screenshots/ into the output directory and writing its dossier.json there.
 // A working gta6-01 entry (Node 22, standard library only): the game is this directory's
 // game/ folder, plain static files a desktop browser loads offline (game/index.html and its ES
 // modules, no library and no network request), and the program hands it in. It copies game/ and
